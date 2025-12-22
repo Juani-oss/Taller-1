@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro libro</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+</head>
+<body>
+<div th:replace="components/navbar :: navbar"></div>
+
+<section class="bg-white w-1/2 mx-auto">
+    <div class="py-8 px-4 mx-auto lg:py-16">
+        <h2 class="mb-4 text-xl font-bold text-gray-900">Agregar un nuevo Producto</h2>
+        <form action="/products/saveProduct" method="post" th:object="${product}">
+            <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                <div class="sm:col-span-2">
+                    <label for="name"
+                           class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+                    <input th:field="*{name}" type="name" name="name" id="name"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                           placeholder="Type product name" required="">
+                </div>
+                <div hidden class="w-full">
+                    <input hidden th:field="*{id}" type="text" name="id" id="id"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                           placeholder="Product brand">
+                </div>
+                <div class="w-full">
+                    <label for="codigo"
+                           class="block mb-2 text-sm font-medium text-gray-900">Código</label>
+                    <input th:field="*{codigo}" type="text" name="codigo" id="codigo"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                           placeholder="Product brand" required="">
+                </div>
+                <div class="w-full">
+                    <label for="categoria"
+                           class="block mb-2 text-sm font-medium text-gray-900">Categoria</label>
+                    <input th:field="*{categoria}" type="text" name="categoria" id="categoria"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                           placeholder="Product brand" required="">
+                </div>
+                <div class="w-full">
+                    <label for="proveedor"
+                           class="block mb-2 text-sm font-medium text-gray-900">Proveedor</label>
+                    <input th:field="*{proveedor}" type="text" name="proveedor" id="proveedor"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                           placeholder="Product brand" required="">
+                </div>
+                <div class="w-full">
+                    <label for="ubicacion"
+                           class="block mb-2 text-sm font-medium text-gray-900">Ubicacion</label>
+                    <input th:field="*{ubicacion}" type="text" name="ubicacion" id="ubicacion"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                           placeholder="Product brand" required="">
+                </div>
+                <div class="w-full">
+                    <label for="precio"
+                           class="block mb-2 text-sm font-medium text-gray-900">precio</label>
+                    <input th:field="*{precio}" type="text" name="precio" id="precio"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                           placeholder="Product brand" required="">
+                </div>
+                <div class="w-full">
+                    <label for="stock"
+                           class="block mb-2 text-sm font-medium text-gray-900">Stock</label>
+                    <input type="number" name="stock" id="stock" th:field="*{stock}"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                           placeholder="$2999" required="">
+                </div>
+            </div>
+            <button type="submit"
+                    class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white cursor-pointer bg-blue-600 text-black rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-blue-800">
+                Agregar producto
+            </button>
+        </form>
+    </div>
+</section>
+</body>
+</html>
