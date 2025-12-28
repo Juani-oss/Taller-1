@@ -57,4 +57,10 @@ public class Product {
     @NotBlank(message = "El stock no puede estar vacío")
     private String stock;
 
+    private String imagen;
+
+    @NotBlank(message = "La ubicación no puede estar vacía")
+    private String descripcion;
 }
+
+

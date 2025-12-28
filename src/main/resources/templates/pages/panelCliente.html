@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>TiendaMax | Inicio</title>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+
+</head>
+
+<body class="bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
+
+<!-- ================= NAVBAR ================= -->
+<div th:replace="components/navbarCliente :: navbarCliente"></div>
+
+
+<section class="py-16">
+  <div class="flex flex-col items-center text-center mb-10">
+    <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white">
+      <span class="text-blue-600">Bienvenido a TiendaMax</span>
+    </h1>
+    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+      Encuentra lo mejor en tecnologia al mejor precio
+    </p>
+  </div>
+
+
+  <!-- ================= CAROUSEL ================= -->
+  <div id="controls-carousel"
+       class="relative w-3/4 lg:w-2/3 mx-auto shadow-2xl rounded-2xl overflow-hidden"
+       data-carousel="static">
+
+
+    <div class="relative h-64 md:h-96 overflow-hidden rounded-2xl">
+
+
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <img th:src="@{https://i.postimg.cc/5yMm8pKx/pexels-nurseryart-346752.jpg}"
+             class="absolute block w-full h-full object-cover"
+             alt="Imagen 1">
+      </div>
+
+
+      <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+        <img th:src="@{https://i.postimg.cc/vTLth9C4/pexels-minan1398-1087727.jpg}"
+             class="absolute block w-full h-full object-cover"
+             alt="Imagen 2">
+      </div>
+
+
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <img th:src="@{https://i.postimg.cc/Y0fzRgTC/pexels-asphotography-230544.jpg}"
+             class="absolute block w-full h-full object-cover"
+             alt="Imagen 3">
+      </div>
+    </div>
+
+
+    <button type="button"
+            class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group"
+            data-carousel-prev>
+            <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/40 dark:bg-gray-800/40 group-hover:bg-white/70 dark:group-hover:bg-gray-800/70">
+                <svg class="w-5 h-5 text-gray-900 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m15 19-7-7 7-7"/>
+                </svg>
+            </span>
+    </button>
+
+    <button type="button"
+            class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group"
+            data-carousel-next>
+            <span
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/40 dark:bg-gray-800/40 group-hover:bg-white/70 dark:group-hover:bg-gray-800/70">
+                <svg class="w-5 h-5 text-gray-900 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m9 5 7 7-7 7"/>
+                </svg>
+            </span>
+    </button>
+  </div>
+</section>
+
+
+<!-----CARDS------------>
+
+
+<div class="bg-gray-50 p-6 min-h-screen">
+  <div class="grid grid-cols-3 md:grid-cols-1 gap-4 max-w-7xl mx-auto auto-rows-[350px]">
+
+    <div class="group relative md:col-span-2 md:row-span-2 bg-[#ddecfa] rounded-xl overflow-hidden p-8 shadow-sm transition-all duration-500 hover:shadow-xl">
+      <div class="relative z-10 max-w-xs">
+        <p class="text-white font-bold text-sm mb-2">Vive los </p>
+        <h2 class="text-4xl font-black text-white leading-tight mb-6">Mejores descuentos hasta el 50%</h2>
+
+      </div>
+
+      <<div class="absolute inset-0 flex items-end justify-center pointer-events-none">
+      <img  th:src="@{https://i.postimg.cc/rFKCfsqN/pexels-max-fischer-5872354.jpg}"
+            class="w-[70%] h-auto object-contain transition-all duration-700 group-hover:opacity-0 group-hover:scale-90"
+            alt="Fitness gear">
+      <img th:src="@{https://i.postimg.cc/nr7VLqv5/tamanna-rumee-lp-Gm415q9JA-unsplash.jpg}"
+           class="absolute w-[70%] h-auto object-contain opacity-0 scale-110 transition-all duration-700 group-hover:opacity-100 group-hover:scale-100"
+           alt="Yoga gear">
+    </div>
+    </div>
+
+    <div class="group relative md:col-span-2 md:row-span-2 bg-[#ddecfa] rounded-xl overflow-hidden p-8 shadow-sm transition-all duration-500 hover:shadow-xl">
+      <div class="relative z-10 max-w-xs">
+        <p class="text-white font-bold text-sm mb-2">Vive tu era </p>
+        <h2 class="text-4xl font-black text-white leading-tight mb-6">Gamer con los mejores productos</h2>
+
+      </div>
+
+      <<div class="absolute inset-0 flex items-end justify-center pointer-events-none">
+      <img  th:src="@{https://i.postimg.cc/rwszLRDz/shree-hari-photography-4n7AHHSu-Vcs-unsplash.jpg}"
+            class="w-[70%] h-auto object-contain transition-all duration-700 group-hover:opacity-0 group-hover:scale-90"
+            alt="Fitness gear">
+      <img th:src="@{https://i.postimg.cc/C5JM3wYP/harshit-suryawanshi-H9JMj-Jlg-Zrw-unsplash.jpg}"
+           class="absolute w-[70%] h-auto object-contain opacity-0 scale-110 transition-all duration-700 group-hover:opacity-100 group-hover:scale-100"
+           alt="Yoga gear">
+    </div>
+
+    </div>
+    <div class="group relative md:col-span-2 md:row-span-2 bg-[#ddecfa] rounded-xl overflow-hidden p-8 shadow-sm transition-all duration-500 hover:shadow-xl">
+      <div class="relative z-10 max-w-xs">
+        <p class="text-white font-bold text-sm mb-2">Vive la moda </p>
+        <h2 class="text-4xl font-black text-white leading-tight mb-6">A tu estilo</h2>
+
+      </div>
+
+      <<div class="absolute inset-0 flex items-end justify-center pointer-events-none">
+      <img  th:src="@{https://i.postimg.cc/hGSnqHZc/clem-onojeghuo-Hp-EDSZuk-Jqk-unsplash.jpg}"
+            class="w-[70%] h-auto object-contain transition-all duration-700 group-hover:opacity-0 group-hover:scale-90"
+            alt="Fitness gear">
+      <img th:src="@{https://i.postimg.cc/65vtVVGX/ayo-ogunseinde-Uq-T55t-GBqz-I-unsplash.jpg}"
+           class="absolute w-[70%] h-auto object-contain opacity-0 scale-110 transition-all duration-700 group-hover:opacity-100 group-hover:scale-100"
+           alt="Yoga gear">
+    </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+<div th:replace="components/footer :: footer"></div>
+
+
+</body>
+</html>

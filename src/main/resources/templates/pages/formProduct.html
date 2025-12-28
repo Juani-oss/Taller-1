@@ -1,80 +1,126 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Registro libro</title>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet"/>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
-</head>
-<body>
-<div th:replace="components/navbar :: navbar"></div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto | Admin</title>
 
-<section class="bg-white w-1/2 mx-auto">
-    <div class="py-8 px-4 mx-auto lg:py-16">
-        <h2 class="mb-4 text-xl font-bold text-gray-900">Agregar un nuevo Producto</h2>
-        <form action="/products/saveProduct" method="post" th:object="${product}">
-            <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                <div class="sm:col-span-2">
-                    <label for="name"
-                           class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
-                    <input th:field="*{name}" type="name" name="name" id="name"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="Type product name" required="">
-                </div>
-                <div hidden class="w-full">
-                    <input hidden th:field="*{id}" type="text" name="id" id="id"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="Product brand">
-                </div>
-                <div class="w-full">
-                    <label for="codigo"
-                           class="block mb-2 text-sm font-medium text-gray-900">Código</label>
-                    <input th:field="*{codigo}" type="text" name="codigo" id="codigo"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="Product brand" required="">
-                </div>
-                <div class="w-full">
-                    <label for="categoria"
-                           class="block mb-2 text-sm font-medium text-gray-900">Categoria</label>
-                    <input th:field="*{categoria}" type="text" name="categoria" id="categoria"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="Product brand" required="">
-                </div>
-                <div class="w-full">
-                    <label for="proveedor"
-                           class="block mb-2 text-sm font-medium text-gray-900">Proveedor</label>
-                    <input th:field="*{proveedor}" type="text" name="proveedor" id="proveedor"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="Product brand" required="">
-                </div>
-                <div class="w-full">
-                    <label for="ubicacion"
-                           class="block mb-2 text-sm font-medium text-gray-900">Ubicacion</label>
-                    <input th:field="*{ubicacion}" type="text" name="ubicacion" id="ubicacion"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="Product brand" required="">
-                </div>
-                <div class="w-full">
-                    <label for="precio"
-                           class="block mb-2 text-sm font-medium text-gray-900">precio</label>
-                    <input th:field="*{precio}" type="text" name="precio" id="precio"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="Product brand" required="">
-                </div>
-                <div class="w-full">
-                    <label for="stock"
-                           class="block mb-2 text-sm font-medium text-gray-900">Stock</label>
-                    <input type="number" name="stock" id="stock" th:field="*{stock}"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                           placeholder="$2999" required="">
-                </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet"/>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+<!-- ================= NAVBAR ADMIN ================= -->
+<div th:replace="components/navbarAdmin :: navbarAdmin"></div>
+
+<!-- ================= MAIN ================= -->
+<main class="flex-grow flex items-center justify-center px-4 py-10">
+
+    <div class="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-8">
+
+        <!-- ICONO -->
+        <div class="flex justify-center mb-6">
+            <div class="bg-blue-100 p-4 rounded-full">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0l-8 5-8-5"/>
+                </svg>
             </div>
+        </div>
+
+
+        <h1 class="text-3xl font-extrabold text-center text-gray-900 mb-2">
+            Agregar Producto
+        </h1>
+        <p class="text-center text-gray-500 mb-8 text-sm">
+            Completa la información del nuevo producto
+        </p>
+
+
+        <form action="/products/saveProduct" method="post" th:object="${product}" class="space-y-6">
+
+
+            <input type="hidden" th:field="*{id}">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                <div class="md:col-span-2">
+                    <label class="block mb-1 text-sm font-medium text-gray-700">Nombre</label>
+                    <input th:field="*{name}" type="text" required
+                           class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                           placeholder="Nombre del producto">
+                </div>
+
+                <div>
+                    <label class="block mb-1 text-sm font-medium text-gray-700">Código</label>
+                    <input th:field="*{codigo}" type="text" required
+                           class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                           placeholder="Código">
+                </div>
+
+                <div>
+                    <label class="block mb-1 text-sm font-medium text-gray-700">Categoría</label>
+                    <input th:field="*{categoria}" type="text" required
+                           class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                           placeholder="Categoría">
+                </div>
+
+                <div>
+                    <label class="block mb-1 text-sm font-medium text-gray-700">Proveedor</label>
+                    <input th:field="*{proveedor}" type="text" required
+                           class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                           placeholder="Proveedor">
+                </div>
+
+                <div>
+                    <label class="block mb-1 text-sm font-medium text-gray-700">Ubicación</label>
+                    <input th:field="*{ubicacion}" type="text" required
+                           class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                           placeholder="Ubicación">
+                </div>
+
+                <div>
+                    <label class="block mb-1 text-sm font-medium text-gray-700">Precio</label>
+                    <input th:field="*{precio}" type="text" required
+                           class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                           placeholder="$0.00">
+                </div>
+
+                <div>
+                    <label class="block mb-1 text-sm font-medium text-gray-700">Stock</label>
+                    <input th:field="*{stock}" type="number" required
+                           class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                           placeholder="Cantidad">
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block mb-1 text-sm font-medium text-gray-700">Descripción</label>
+                    <textarea th:field="*{descripcion}" rows="4" required
+                              class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                              placeholder="Descripción del producto"></textarea>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block mb-1 text-sm font-medium text-gray-700">Imagen (URL)</label>
+                    <input th:field="*{imagen}" type="text" required
+                           class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                           placeholder="https://imagen.com/producto.jpg">
+                </div>
+
+            </div>
+
             <button type="submit"
-                    class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white cursor-pointer bg-blue-600 text-black rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-blue-800">
-                Agregar producto
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition active:scale-95">
+                Guardar Producto
             </button>
+
         </form>
+
     </div>
-</section>
+</main>
+
 </body>
 </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+</head>
+<body>
+
+<div th:replace="components/navbarAdmin :: navbarAdmin"></div>
+
+<section class="w-1/2 mx-auto flex flex-col space-y-4 mt-4">
+
+    <!-- BUSCADOR -->
+    <form th:action="@{/users}" class="max-w-md mx-auto w-full">
+        <div class="relative">
+            <input type="search" name="buscarUsuario"
+                   class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
+                   placeholder="Buscar usuario..." />
+            <button type="submit"
+                    class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 rounded-lg text-sm px-4 py-2">
+                Buscar
+            </button>
+        </div>
+    </form>
+
+    <!-- TABLA -->
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+                <th class="px-6 py-3">Name</th>
+                <th class="px-6 py-3">Username</th>
+                <th class="px-6 py-3">Roles</th>}
+                <th class="px-6 py-3">Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="user : ${users}" class="bg-white border-b border-gray-200">>
+                <td th:text="${user.name}" class="px-6 py-4"></td>
+                <td th:text="${user.username}" class="px-6 py-4"></td>
+                <td th:text="${user.rol}" class="px-6 py-4"></td>
+
+                <td class="flex gap-3">
+                    <a th:href="@{/users/update/{id}(id=${user.id})}"
+                       class="text-blue-600 cursor-pointer hover:underline">Editar</a>
+
+                    <form th:action="@{/users/delete/{id}(id=${user.id})}" method="post">
+                        <button type="submit" class="text-red-600 cursor-pointer hover:underline"
+                                onclick="return confirm('¿Eliminar usuario?')">
+                            Eliminar
+                        </button>
+                    </form>
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+
+</section>
+
+</body>
+</html>

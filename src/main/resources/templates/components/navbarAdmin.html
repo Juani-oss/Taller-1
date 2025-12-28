@@ -1,0 +1,30 @@
+<nav th:fragment="navbarAdmin" class="bg-white border-gray-200">
+<aside class="fixed top-0 left-0 w-64 h-screen bg-gray-800 text-white">
+    <div class="px-4 py-6">
+        <h2 class="text-2xl font-bold text-center mb-6">Admin</h2>
+
+        <ul class="space-y-2">
+            <li>
+                <a th:href="@{/products/registerProduct}" class="block p-2 rounded hover:bg-gray-700">
+                    📊 Registro Productos
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/products}" class="block p-2 rounded hover:bg-gray-700">
+                    📦 Lista de productos
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/users}" class="block p-2 rounded hover:bg-gray-700">
+                    👤 Lista de usuarios registrados
+                </a>
+            </li>
+            <li>
+                <form th:action="@{/logout}" method="post" class="inline">
+                    <button type="submit" class="block py-2 px-3 text-red-600 rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:p-0">Cerrar Sesión</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</aside>
+</nav>

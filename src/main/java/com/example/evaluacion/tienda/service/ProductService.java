@@ -16,6 +16,10 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+
+    public List<Product> getProductsByCategoria(String categoria) {
+        return productRepository.findByCategoria(categoria);
+    }
     public List<Product> findAll() {
         return productRepository.findAll();
     }
@@ -36,7 +40,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Product updateBook(Long id, Product product) {
+    public Product updateProduct(Long id, Product product) {
        Product oldProduct = findBookById(id).orElseThrow(() -> new RuntimeException("Producto no existente"));
 
         oldProduct.setName(product.getName());
