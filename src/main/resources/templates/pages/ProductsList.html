@@ -89,7 +89,8 @@
                 <td th:text="*{product.stock}" class="px-6 py-4"></td>
                 <td th:text="*{product.descripcion}" class="px-6 py-4"></td>
                 <td th:text="*{product.imagen}" class="px-6 py-4"></td>
-
+                <td th:text="*{product.proveedor.name}" class="px-6 py-4"></td>
+                <td th:text="*{product.proveedor.city}" class="px-6 py-4"></td>
                 <td class="px-6 py-4 flex gap-4">
                     <a th:href="@{/products/update/} + ${product.id}"
                        class="text-blue-600 cursor-pointer hover:underline">

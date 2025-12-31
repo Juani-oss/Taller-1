@@ -69,11 +69,15 @@
                 </div>
 
                 <div>
-                    <label class="block mb-1 text-sm font-medium text-gray-700">Proveedor</label>
-                    <input th:field="*{proveedor}" type="text" required
-                           class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
-                           placeholder="Proveedor">
+                    <select id="proveedor" th:field="*{proveedor.id}" class="px-4 py-2 border rounded-lg text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="" disabled selected>Selecciona un proveedor</option>
+                        <option th:each="proveedor : ${proveedores}"
+                                th:value="${proveedor.id}"
+                                th:text="${proveedor.name}">
+                        </option>
+                    </select>
                 </div>
+
 
                 <div>
                     <label class="block mb-1 text-sm font-medium text-gray-700">Ubicación</label>

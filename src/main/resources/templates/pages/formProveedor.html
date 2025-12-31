@@ -1,0 +1,97 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Proveedor | Admin</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet"/>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+<!-- ================= NAVBAR ADMIN ================= -->
+<div th:replace="components/navbarAdmin :: navbarAdmin"></div>
+
+<!-- ================= MAIN ================= -->
+<main class="flex-grow flex items-center justify-center px-4 py-10">
+
+  <div class="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-8">
+
+    <!-- ICONO -->
+    <div class="flex justify-center mb-6">
+      <div class="bg-blue-100 p-4 rounded-full">
+        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor"
+             viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0l-8 5-8-5"/>
+        </svg>
+      </div>
+    </div>
+
+
+    <h1 class="text-3xl font-extrabold text-center text-gray-900 mb-2">
+      Agregar Provedor
+    </h1>
+    <p class="text-center text-gray-500 mb-8 text-sm">
+      Completa la información del nuevo proveedor
+    </p>
+
+
+    <form action="/proveedores/saveProveedor" method="post" th:object="${proveedor}" class="space-y-6">
+
+
+      <input type="hidden" th:field="*{id}">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <div class="md:col-span-2">
+          <label class="block mb-1 text-sm font-medium text-gray-700">Nombre</label>
+          <input th:field="*{name}" type="text" required
+                 class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                 placeholder="Nombre del producto">
+        </div>
+
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700">Ciudad</label>
+          <input th:field="*{city}" type="text" required
+                 class="w-full rounded-xl border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-3 text-sm"
+                 placeholder="Código">
+        </div>
+
+      </div>
+
+      <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition active:scale-95">
+        Guardar Producto
+      </button>
+
+    </form>
+
+  </div>
+</main>
+
+</body>
+</html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Producto | Admin</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet"/>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+<!-- ================= NAVBAR ADMIN ================= -->
+<div th:replace="components/navbarAdmin :: navbarAdmin"></div>
+
+<!-- ================= MAIN ================= -->
+
+
+</body>
+</html>

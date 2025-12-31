@@ -2,7 +2,9 @@ package com.example.evaluacion.tienda.controller;
 
 
 import com.example.evaluacion.tienda.model.Product;
+import com.example.evaluacion.tienda.model.Proveedor;
 import com.example.evaluacion.tienda.service.ProductService;
+import com.example.evaluacion.tienda.service.ProveedorService;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -23,6 +25,8 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private ProveedorService proveedorService;
 
     @GetMapping("/categoria")
     public String productsByCategoria(@PathVariable String categoria, Model model) {
@@ -54,6 +58,9 @@ public class ProductController {
     public String registerProduct(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
+        //pasar datos del autor
+        List<Proveedor> proveedores = proveedorService.findAll();
+        model.addAttribute("proveedores", proveedores);
         return "pages/formProduct";
     }
 
@@ -66,11 +73,11 @@ public class ProductController {
 
     @GetMapping("/update/{id}")
     public String updateProduct(@PathVariable Long id, Model model) {
-
         Product product = productService.findBookById(id)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
-
         model.addAttribute("product", product);
+        List<Proveedor> proveedores = proveedorService.findAll();
+        model.addAttribute("proveedores", proveedores);
         return "pages/formProduct";
     }
 
@@ -109,13 +116,17 @@ public class ProductController {
             table.addCell("STOCK");
 
             for (Product product : productService.findAll()) {
-                table.addCell(String.valueOf(product.getId()));
-                table.addCell(product.getName());
-                table.addCell(product.getCodigo());
-                table.addCell(product.getProveedor());
-                table.addCell(product.getUbicacion());
-                table.addCell(String.valueOf(product.getPrecio()));
-                table.addCell(String.valueOf(product.getStock()));
+                for (Proveedor proveedor : proveedorService.findAll()) {
+
+                    table.addCell(String.valueOf(product.getId()));
+                    table.addCell(product.getName());
+                    table.addCell(product.getCodigo());
+                    table.addCell(proveedor.getName());
+                    table.addCell(product.getUbicacion());
+                    table.addCell(String.valueOf(product.getPrecio()));
+                    table.addCell(String.valueOf(product.getStock()));
+
+                }
             }
 
             document.add(table);

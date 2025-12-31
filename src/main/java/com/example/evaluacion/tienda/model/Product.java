@@ -6,10 +6,12 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Data
+@ToString(exclude = "proveedor")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -37,12 +39,12 @@ public class Product {
     @NotBlank(message = "La categoría no puede estar vacía")
     private String categoria;
 
-    @NotBlank(message = "El proveedor no puede estar vacío")
+    /*@NotBlank(message = "El proveedor no puede estar vacío")
     @Pattern(
             regexp = "^PR-[A-Z ]+$",
             message = "El proveedor debe iniciar con PR- y estar en MAYÚSCULAS"
     )
-    private String proveedor;
+    private String proveedor;*/
 
     @NotBlank(message = "La ubicación no puede estar vacía")
     @Pattern(
@@ -61,6 +63,10 @@ public class Product {
 
     @NotBlank(message = "La ubicación no puede estar vacía")
     private String descripcion;
+
+    @ManyToOne
+    @JoinColumn(name = "id_proveedor")
+    private Proveedor proveedor;
 }
 
 

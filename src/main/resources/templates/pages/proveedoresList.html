@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+</head>
+
+<body>
+<div th:replace="components/navbarAdmin :: navbarAdmin"></div>
+
+
+<section class="w-1/2 mx-auto flex flex-col space-y-4 mt-4">
+  <a th:href="@{/products/pdf}"
+     target="_blank"
+     class="inline-flex items-center gap-2 px-5 py-2.5
+          text-sm font-medium text-white
+          bg-red-600 rounded-lg
+          hover:bg-red-700 focus:ring-4 focus:ring-red-300">
+
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 16a1 1 0 0 1-1-1V7a1 1 0 1 1 2 0v8a1 1 0 0 1-1 1Z"/>
+      <path d="M12 18a1 1 0 0 1-.7-.3l-3-3a1 1 0 1 1 1.4-1.4L12 15.6l2.3-2.3a1 1 0 0 1 1.4 1.4l-3 3a1 1 0 0 1-.7.3Z"/>
+      <path d="M4 20a2 2 0 0 1-2-2v-3a1 1 0 1 1 2 0v3h16v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H4Z"/>
+    </svg>
+
+    Exportar PDF
+  </a>
+
+
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3">Nombre</th>
+        <th scope="col" class="px-6 py-3">Ciudad</th>
+        <th scope="col" class="px-6 py-3">Acciones</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="proveedor:${proveedores}" class="bg-white border-b border-gray-200">
+        <td th:text="*{proveedor.name}" class="px-6 py-4"></td>
+        <td th:text="*{proveedor.city}" class="px-6 py-4"></td>
+
+
+        <td class="px-6 py-4 flex gap-4">
+          <a th:href="@{/proveedores/update/} + ${proveedor.id}"
+             class="text-blue-600 cursor-pointer hover:underline">
+            Editar
+          </a>
+
+          <form th:action="@{/proveedores/delete/} + ${proveedor.id}" method="post">
+            <input type="hidden" name="_method" value="delete"/>
+            <button type="submit"
+                    onclick="return confirm('¿Estás seguro de eliminar el registro?')"
+                    class="text-red-600 cursor-pointer hover:underline">
+              Eliminar
+            </button>
+            <a th:href="@{/proveedores/proveedor/} + ${proveedor.id}">
+              Productos
+            </a>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+</body>
+</html>
